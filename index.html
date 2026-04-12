@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vision Store | Sites premium, landing pages e presença digital estratégica. Transformamos visão em presença digital forte, moderna e que vende.">
+    <meta name="keywords" content="criação de sites, sites profissionais, landing page, site para empresa, site para loja, site para barbearia, presença digital, identidade visual, Guarulhos, SP">
+    <meta name="author" content="Vision Store Studio">
+    <title>Vision Store | Sites Premium para Marcas que Vendem Mais</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap');
+
+        :root {
+            --navy: #0A1F3D;
+        }
+
+        * {
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+        }
+
+        .tailwind-ready .text-grotesk {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .hero-bg {
+            background: linear-gradient(135deg, #0A1F3D 0%, #000000 100%);
+        }
+
+        .section-header {
+            position: relative;
+        }
+        .section-header::after {
+            content: '';
+            position: absolute;
+            width: 64px;
+            height: 3px;
+            background: #00BFFF;
+            bottom: -8px;
+            left: 0;
+        }
+
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgb(0 191 255 / 0.15);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #00BFFF;
+        }
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        .modal {
+            animation: modalPop 0.3s ease forwards;
+        }
+
+        @keyframes modalPop {
+            0% { transform: scale(0.95); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .whatsapp-float {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="tailwind-ready bg-[#0A1F3D] text-white font-sans">
+
+<!-- NAVBAR -->
+<nav class="bg-[#0A1F3D]/95 backdrop-blur-lg border-b border-white/10 sticky top-0 z-50">
+    <div class="max-w-screen-2xl mx-auto px-8 py-5 flex items-center justify-between">
+        <!-- Logo -->
+        <div class="flex items-center gap-x-3">
+            <svg width="42" height="42" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M25 20 L40 75 L50 45 L60 75 L75 20" stroke="#ffffff" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"/>
+                <circle cx="50" cy="47" r="18" fill="#00BFFF"/>
+            </svg>
+            <div class="text-grotesk text-3xl font-semibold tracking-[-2px]">Vision Store</div>
+            <div class="text-xs font-medium bg-white/10 text-white px-2.5 py-0.5 rounded-full -mt-1">STUDIO</div>
+        </div>
+
+        <!-- Desktop Menu -->
+        <div class="hidden lg:flex items-center gap-x-9 text-sm font-medium">
+            <a href="#home" onclick="smoothScrollTo('home')" class="nav-link text-white/90 hover:text-white">Início</a>
+            <a href="#servicos" onclick="smoothScrollTo('servicos')" class="nav-link text-white/90 hover:text-white">Serviços</a>
+            <a href="#portfolio" onclick="smoothScrollTo('portfolio')" class="nav-link text-white/90 hover:text-white">Portfólio</a>
+            <a href="#planos" onclick="smoothScrollTo('planos')" class="nav-link text-white/90 hover:text-white">Planos</a>
+            <a href="#sobre" onclick="smoothScrollTo('sobre')" class="nav-link text-white/90 hover:text-white">Sobre</a>
+            <a href="#contato" onclick="smoothScrollTo('contato')" class="nav-link text-white/90 hover:text-white">Contato</a>
+        </div>
+
+        <!-- CTA Desktop -->
+        <div class="hidden lg:flex items-center gap-x-4">
+            <a href="https://www.instagram.com/[INSTAGRAM_HANDLE]" target="_blank" class="flex items-center gap-x-2 text-sm font-medium px-5 py-3 rounded-2xl border border-white/20 hover:border-white/40">
+                <i class="fab fa-instagram"></i>
+                <span>@[INSTAGRAM_HANDLE]</span>
+            </a>
+            <button onclick="smoothScrollTo('contato')" class="bg-[#00BFFF] hover:bg-white hover:text-[#0A1F3D] px-7 py-3 rounded-2xl font-semibold flex items-center gap-x-2 text-sm uppercase tracking-widest">
+                <i class="fas fa-paper-plane"></i>
+                SOLICITAR ORÇAMENTO
+            </button>
+        </div>
+
+        <!-- Mobile Hamburger -->
+        <button onclick="toggleMobileMenu()" class="lg:hidden w-11 h-11 flex items-center justify-center text-2xl">
+            <i id="hamburger-icon" class="fas fa-bars"></i>
+        </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-[#0A1F3D] border-t border-white/10 px-8 py-6">
+        <div class="flex flex-col gap-y-6 text-lg font-medium">
+            <a href="#home" onclick="toggleMobileMenu();smoothScrollTo('home')" class="py-2">Início</a>
+            <a href="#servicos" onclick="toggleMobileMenu();smoothScrollTo('servicos')" class="py-2">Serviços</a>
+            <a href="#portfolio" onclick="toggleMobileMenu();smoothScrollTo('portfolio')" class="py-2">Portfólio</a>
+            <a href="#planos" onclick="toggleMobileMenu();smoothScrollTo('planos')" class="py-2">Planos</a>
+            <a href="#sobre" onclick="toggleMobileMenu();smoothScrollTo('sobre')" class="py-2">Sobre</a>
+            <a href="#contato" onclick="toggleMobileMenu();smoothScrollTo('contato')" class="py-2">Contato</a>
+            
+            <div class="pt-6 border-t border-white/10 flex flex-col gap-y-4">
+                <a href="https://wa.me/55[WHATSAPP]" target="_blank" class="flex items-center justify-center gap-x-3 bg-green-500 text-white py-4 rounded-3xl font-semibold text-base">
+                    <i class="fab fa-whatsapp text-2xl"></i>
+                    FALAR NO WHATSAPP
+                </a>
+                <button onclick="toggleMobileMenu();smoothScrollTo('contato')" class="bg-white text-[#0A1F3D] py-4 rounded-3xl font-semibold text-base">
+                    SOLICITAR ORÇAMENTO
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero-bg min-h-screen flex items-center relative overflow-hidden">
+    <div class="max-w-screen-2xl mx-auto px-8 pt-20 pb-16 lg:py-0 grid lg:grid-cols-2 gap-16 items-center">
+        <div class="space-y-8">
+            <div class="inline-flex items-center gap-x-3 bg-white/10 text-white/80 text-sm font-medium px-6 py-3 rounded-3xl border border-white/10">
+                <div class="w-2 h-2 bg-[#00BFFF] rounded-full animate-pulse"></div>
+                STUDIO DIGITAL PREMIUM • GUARULHOS • BRASIL
+            </div>
+            
+            <h1 class="text-grotesk text-6xl lg:text-7xl font-semibold tracking-[-3px] leading-none">
+                Transformando visão<br>em presença digital.
+            </h1>
+            
+            <p class="text-2xl text-white/80 max-w-lg">
+                Sites modernos, estratégicos e profissionais para negócios que querem <span class="text-[#00BFFF]">vender mais</span>, passar confiança e dominar o digital.
+            </p>
+
+            <div class="flex flex-wrap gap-4">
+                <button onclick="smoothScrollTo('contato')" class="bg-[#00BFFF] hover:bg-white hover:text-[#0A1F3D] text-white px-10 py-5 rounded-3xl text-xl font-semibold flex items-center gap-x-3 shadow-2xl shadow-[#00BFFF]/40">
+                    <i class="fas fa-rocket"></i>
+                    SOLICITAR ORÇAMENTO AGORA
+                </button>
+                <button onclick="smoothScrollTo('portfolio')" class="border border-white/30 hover:border-white/70 px-10 py-5 rounded-3xl text-xl font-semibold flex items-center gap-x-3">
+                    <i class="fas fa-eye"></i>
+                    VER PORTFÓLIO
+                </button>
+            </div>
+
+            <div class="flex items-center gap-x-8 text-sm">
+                <div class="flex -space-x-4">
+                    <div class="w-8 h-8 bg-white/10 border-2 border-white rounded-2xl flex items-center justify-center text-[#00BFFF] text-xs font-bold">+37</div>
+                </div>
+                <p class="text-white/70 leading-tight">
+                    +37 projetos entregues<br>
+                    <span class="text-[#00BFFF] font-semibold">100% dos clientes aumentaram vendas</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Hero Visual -->
+        <div class="relative hidden lg:flex justify-center">
+            <div class="bg-black rounded-3xl p-4 shadow-2xl shadow-[#00BFFF]/30 border border-white/10 relative overflow-hidden">
+                <!-- Mockup content (simplified) -->
+                <div class="bg-[#0A1F3D] rounded-2xl aspect-video flex items-center justify-center text-white text-6xl font-light tracking-widest">VISION STORE</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROVA DE VALOR / DIFERENCIAIS -->
+<section class="py-24 bg-black">
+    <div class="max-w-screen-2xl mx-auto px-8">
+        <span class="px-4 py-2 text-xs font-semibold tracking-widest bg-white/10 rounded-3xl">POR QUE ESCOLHER A VISION STORE?</span>
+        <h2 class="text-5xl text-grotesk font-semibold mt-6">Não é só um site.<br>É autoridade digital.</h2>
+        
+        <div class="grid md:grid-cols-3 gap-8 mt-16">
+            <div class="card-hover bg-[#0A1F3D] rounded-3xl p-8">
+                <h3 class="text-2xl font-semibold mb-3">Design premium minimalista</h3>
+                <p class="text-white/70">Visual que transmite luxo, confiança e modernidade desde o primeiro segundo. Zero amadorismo.</p>
+            </div>
+            <div class="card-hover bg-[#0A1F3D] rounded-3xl p-8">
+                <h3 class="text-2xl font-semibold mb-3">Foco total em conversão</h3>
+                <p class="text-white/70">Botão WhatsApp estratégico, CTAs claros, formulários otimizados e estrutura pensada para vender 24h por dia.</p>
+            </div>
+            <div class="card-hover bg-[#0A1F3D] rounded-3xl p-8">
+                <h3 class="text-2xl font-semibold mb-3">Carrega em menos de 2 segundos</h3>
+                <p class="text-white/70">Responsivo + rápido em qualquer celular, tablet ou desktop. SEO básico incluso.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PARA QUEM É -->
+<section id="para-quem" class="py-24 bg-[#0A1F3D]">
+    <div class="max-w-screen-2xl mx-auto px-8">
+        <div class="text-center mb-12">
+            <span class="uppercase text-sm font-semibold text-[#00BFFF]">SEU NEGÓCIO, NOSSA ESPECIALIDADE</span>
+            <h2 class="text-5xl text-grotesk font-semibold mt-4">Para quem já está pronto para crescer no digital</h2>
+        </div>
+        
+        <div class="grid lg:grid-cols-2 md:grid-cols-3 gap-6">
+            <div class="bg-white/5 hover:bg-white/10 border border-white/10 rounded-3xl p-6 text-center">Lojas físicas e online</div>
+            <div class="bg-white/5 hover:bg-white/10 border border-white/10 rounded-3xl p-6 text-center">Barbearias e salões</div>
+            <div class="bg-white/5 hover:bg-white/10 border border-white/10 rounded-3xl p-6 text-center">Restaurantes e delivery</div>
+            <div class="bg-white/5 hover:bg-white/10 border border-white/10 rounded-3xl p-6 text-center">Academias e estúdios</div>
+            <div class="bg-white/5 hover:bg-white/10 border border-white/10 rounded-3xl p-6 text-center">Profissionais autônomos</div>
+            <div class="bg-white/5 hover:bg-white/10 border border-white/10 rounded-3xl p-6 text-center">Marcas em crescimento</div>
+        </div>
+    </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section id="servicos" class="py-24 bg-black">
+    <div class="max-w-screen-2xl mx-auto px-8">
+        <div class="flex justify-between items-end mb-12">
+            <div>
+                <span class="uppercase text-sm font-semibold text-[#00BFFF]">O QUE FAZEMOS</span>
+                <h2 class="text-5xl text-grotesk font-semibold">Soluções completas para sua marca</h2>
+            </div>
+            <a href="#contato" onclick="smoothScrollTo('contato')" class="hidden md:flex items-center gap-x-2 text-lg font-medium">
+                QUERO O MEU SITE <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Card 1 -->
+            <div class="card-hover bg-[#0A1F3D] rounded-3xl p-8">
+                <h3 class="text-3xl font-semibold mb-2">Landing Pages</h3>
+                <p class="text-white/70 mb-8">Páginas focadas em conversão, anúncios e captação direta no WhatsApp.</p>
+                <ul class="space-y-3 text-sm">
+                    <li class="flex items-center gap-x-2"><i class="fas fa-check text-[#00BFFF]"></i> Design de alta conversão</li>
+                    <li class="flex items-center gap-x-2"><i class="fas fa-check text-[#00BFFF]"></i> Formulário + WhatsApp</li>
+                    <li class="flex items-center gap-x-2"><i class="fas fa-check text-[#00BFFF]"></i> Otimizada para anúncios</li>
+                </ul>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card-hover bg-[#0A1F3D] rounded-3xl p-8">
+                <h3 class="text-3xl font-semibold mb-2">Sites Institucionais</h3>
+                <p class="text-white/70 mb-8">Site completo para apresentar sua empresa, serviços e contatos com autoridade.</p>
+                <ul class="space-y-3 text-sm">
+                    <li class="flex items-center gap-x-2"><i class="fas fa-check text-[#00BFFF]"></i> Até 8 páginas</li>
+                    <li class="flex items-center gap-x-2"><i class="fas fa-check text-[#00BFFF]"></i> Blog e SEO básico</li>
+                    <li class="flex items-center gap-x-2"><i class="fas fa-check text-[#00BFFF]"></i> Integração Google Maps</li>
+                </ul>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card-hover bg-[#0A1F3D] rounded-3xl p-8">
+                <h3 class="text-3xl font-semibold mb-2">Catálogos Online</h3>
+                <p class="text-white/70 mb-8">Mostre seus produtos de forma profissional sem necessidade de loja complexa.</p>
+                <ul class="space-y-3 text-sm">
+                    <li class="flex items-center gap-x-2"><i class="fas fa-check text-[#00BFFF]"></i> Galeria de produtos</li>
+                    <li class="flex items-center gap-x-2"><i class="fas fa-check text-[#00BFFF]"></i> Botão comprar via WhatsApp</li>
+                    <li class="flex items-center gap-x-2"><i class="fas fa-check text-[#00BFFF]"></i> Filtros e busca</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PORTFÓLIO -->
+<section id="portfolio" class="py-24 bg-[#0A1F3D]">
+    <div class="max-w-screen-2xl mx-auto px-8">
+        <span class="uppercase text-xs font-bold tracking-widest text-[#00BFFF]">MODELOS CONCEITO • PRONTOS PARA INSPIRAR</span>
+        <h2 class="text-5xl text-grotesk font-semibold">Portfólio Vision Store</h2>
+        <p class="text-white/60 max-w-xs mt-3">Todos os projetos seguem o mesmo padrão premium que vamos criar para você.</p>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+            <!-- Projeto 1 -->
+            <div onclick="showProjectModal(1)" class="card-hover cursor-pointer bg-black rounded-3xl overflow-hidden">
+                <div class="h-64 bg-gradient-to-br from-[#1C2B3A] to-black flex items-center justify-center text-8xl">✂️</div>
+                <div class="p-8">
+                    <span class="text-[#00BFFF] text-sm">ELITE CUT</span>
+                    <h4 class="text-2xl font-semibold mt-1">Site premium para barbearia</h4>
+                    <p class="text-white/60 text-sm mt-3">Agendamento online + galeria + WhatsApp direto.</p>
+                </div>
+            </div>
+
+            <!-- Projeto 2 -->
+            <div onclick="showProjectModal(2)" class="card-hover cursor-pointer bg-black rounded-3xl overflow-hidden">
+                <div class="h-64 bg-gradient-to-br from-[#3A1F2E] to-black flex items-center justify-center text-8xl">👕</div>
+                <div class="p-8">
+                    <span class="text-[#00BFFF] text-sm">VIBE STORE</span>
+                    <h4 class="text-2xl font-semibold mt-1">Catálogo online de moda</h4>
+                    <p class="text-white/60 text-sm mt-3">Carrinho via WhatsApp + filtro por coleção.</p>
+                </div>
+            </div>
+
+            <!-- Projeto 3 -->
+            <div onclick="showProjectModal(3)" class="card-hover cursor-pointer bg-black rounded-3xl overflow-hidden">
+                <div class="h-64 bg-gradient-to-br from-[#2E1F1A] to-black flex items-center justify-center text-8xl">🍝</div>
+                <div class="p-8">
+                    <span class="text-[#00BFFF] text-sm">BELLA VITA</span>
+                    <h4 class="text-2xl font-semibold mt-1">Restaurante + cardápio digital</h4>
+                    <p class="text-white/60 text-sm mt-3">Reserva de mesa + integração WhatsApp.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PLANOS -->
+<section id="planos" class="py-24 bg-black">
+    <div class="max-w-screen-2xl mx-auto px-8">
+        <div class="text-center mb-16">
+            <span class="uppercase text-sm font-semibold bg-white/10 px-6 py-3 rounded-3xl">ESCOLHA O SEU NÍVEL DE PRESENÇA</span>
+            <h2 class="text-5xl text-grotesk font-semibold mt-6">Planos feitos para vender</h2>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <!-- Plano Start -->
+            <div class="bg-[#0A1F3D] rounded-3xl p-8 border border-white/10">
+                <div class="text-sm font-semibold text-white/70 mb-2">INICIANTE</div>
+                <div class="flex items-baseline"><span class="text-6xl font-semibold">R$ 597</span><span class="ml-3 text-white/50">a partir de</span></div>
+                <p class="text-white/60 mt-6">1 página profissional perfeita para quem está começando.</p>
+                <ul class="mt-8 space-y-5 text-sm">
+                    <li class="flex gap-x-3"><i class="fas fa-check text-[#00BFFF]"></i> Design responsivo</li>
+                    <li class="flex gap-x-3"><i class="fas fa-check text-[#00BFFF]"></i> Botão WhatsApp + mapa</li>
+                    <li class="flex gap-x-3"><i class="fas fa-check text-[#00BFFF]"></i> Formulário de contatos</li>
+                    <li class="flex gap-x-3"><i class="fas fa-check text-[#00BFFF]"></i> Redes sociais integradas</li>
+                </ul>
+                <button onclick="smoothScrollTo('contato')" class="mt-12 w-full py-5 bg-white text-[#0A1F3D] font-semibold rounded-3xl">ESCOLHER START</button>
+            </div>
+
+            <!-- Plano Pro -->
+            <div class="bg-gradient-to-b from-[#00BFFF] to-[#0A1F3D] text-white rounded-3xl p-8 relative scale-105 shadow-2xl border-2 border-[#00BFFF]">
+                <div class="absolute -top-4 right-8 bg-white text-[#0A1F3D] font-bold rounded-3xl px-6 py-1 text-xs">MAIS ESCOLHIDO</div>
+                <div class="text-sm font-semibold text-white/90 mb-2">COMPLETO</div>
+                <div class="flex items-baseline"><span class="text-6xl font-semibold">R$ 1.297</span><span class="ml-3 text-white/70">a partir de</span></div>
+                <p class="mt-6">Até 5 páginas com visual premium e estratégia de vendas.</p>
+                <ul class="mt-8 space-y-5 text-sm">
+                    <li class="flex gap-x-3"><i class="fas fa-check"></i> Tudo do Start +</li>
+                    <li class="flex gap-x-3"><i class="fas fa-check"></i> SEO básico incluso</li>
+                    <li class="flex gap-x-3"><i class="fas fa-check"></i> Seções estratégicas</li>
+                    <li class="flex gap-x-3"><i class="fas fa-check"></i> 2 rodadas de ajustes</li>
+                    <li class="flex gap-x-3"><i class="fas fa-check"></i> Otimização total mobile</li>
+                </ul>
+                <button onclick="smoothScrollTo('contato')" class="mt-12 w-full py-5 bg-white text-[#0A1F3D] font-semibold rounded-3xl">ESCOLHER PRO</button>
+            </div>
+
+            <!-- Plano Prime -->
+            <div class="bg-[#0A1F3D] rounded-3xl p-8 border border-white/10">
+                <div class="text-sm font-semibold text-white/70 mb-2">PREMIUM</div>
+                <div class="flex items-baseline"><span class="text-6xl font-semibold">R$ 2.497</span><span class="ml-3 text-white/50">a partir de</span></div>
+                <p class="mt-6">Site avançado ou loja virtual completa + identidade visual.</p>
+                <ul class="mt-8 space-y-5 text-sm">
+                    <li class="flex gap-x-3"><i class="fas fa-check text-[#00BFFF]"></i> Tudo do Pro +</li>
+                    <li class="flex gap-x-3"><i class="fas fa-check text-[#00BFFF]"></i> Catálogo / Loja</li>
+                    <li class="flex gap-x-3"><i class="fas fa-check text-[#00BFFF]"></i> Identidade visual aplicada</li>
+                    <li class="flex gap-x-3"><i class="fas fa-check text-[#00BFFF]"></i> Suporte 30 dias</li>
+                    <li class="flex gap-x-3"><i class="fas fa-check text-[#00BFFF]"></i> Ajustes ilimitados iniciais</li>
+                </ul>
+                <button onclick="smoothScrollTo('contato')" class="mt-12 w-full py-5 bg-white text-[#0A1F3D] font-semibold rounded-3xl">ESCOLHER PRIME</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROCESSO -->
+<section class="py-24 bg-[#0A1F3D]">
+    <div class="max-w-screen-2xl mx-auto px-8">
+        <h2 class="text-5xl text-grotesk font-semibold text-center mb-16">Do primeiro contato ao site no ar em poucos dias</h2>
+        <div class="grid md:grid-cols-6 gap-6 text-center">
+            <div class="mx-auto w-16 h-16 bg-white/10 rounded-3xl flex items-center justify-center text-3xl mb-6">1</div>
+            <div><strong>Conversa no WhatsApp</strong><p class="text-xs text-white/60 mt-3">Conversa rápida e direta</p></div>
+            <div class="mx-auto w-16 h-16 bg-white/10 rounded-3xl flex items-center justify-center text-3xl mb-6">2</div>
+            <div><strong>Briefing</strong><p class="text-xs text-white/60 mt-3">Entendemos seu negócio</p></div>
+            <div class="mx-auto w-16 h-16 bg-white/10 rounded-3xl flex items-center justify-center text-3xl mb-6">3</div>
+            <div><strong>Wireframes e copy</strong><p class="text-xs text-white/60 mt-3">Montamos a estrutura</p></div>
+            <div class="mx-auto w-16 h-16 bg-white/10 rounded-3xl flex items-center justify-center text-3xl mb-6">4</div>
+            <div><strong>Design + código premium</strong><p class="text-xs text-white/60 mt-3">Você aprova e ajustamos</p></div>
+            <div class="mx-auto w-16 h-16 bg-[#00BFFF] text-white rounded-3xl flex items-center justify-center text-3xl mb-6">5</div>
+            <div><strong>Você aprova e ajustamos</strong><p class="text-xs text-white/60 mt-3">Rodadas inclusas no plano</p></div>
+            <div class="mx-auto w-16 h-16 bg-white/10 rounded-3xl flex items-center justify-center text-3xl mb-6">6</div>
+            <div><strong>Entregamos pronto + treinamento</strong><p class="text-xs text-white/60 mt-3">Seu site vendendo imediatamente</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre" class="py-24 bg-black">
+    <div class="max-w-screen-2xl mx-auto px-8 grid lg:grid-cols-12 gap-20 items-center">
+        <div class="lg:col-span-5">
+            <h2 class="text-5xl text-grotesk font-semibold">A Vision Store não vende sites.<br>Entrega presença digital de luxo.</h2>
+            <div class="mt-12 text-xl leading-relaxed text-white/80">Nascemos em Guarulhos com a missão de transformar negócios comuns em marcas que inspiram confiança e vendem no digital. Com apenas 17 anos, Vítor Lucas já criou mais de 37 projetos que geraram resultados reais para empreendedores de todo o Brasil.</div>
+            
+            <div class="flex items-center gap-x-8 mt-16">
+                <div class="text-6xl font-semibold text-grotesk text-[#00BFFF]">17</div>
+                <div class="text-sm uppercase">anos de visão</div>
+            </div>
+        </div>
+        <div class="lg:col-span-7 text-white/70 text-lg">
+            Atendimento 100% online para todo o Brasil<br>
+            Foco em resultado e velocidade<br><br>
+            Acreditamos que todo negócio merece uma identidade digital forte. Não fazemos sites genéricos. Criamos experiências visuais que posicionam sua marca como referência no mercado.
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="py-24 bg-[#0A1F3D]">
+    <div class="max-w-screen-2xl mx-auto px-8">
+        <span class="text-[#00BFFF] font-semibold">TIRE SUAS DÚVIDAS</span>
+        <h2 class="text-5xl text-grotesk font-semibold mt-4">Perguntas frequentes</h2>
+        
+        <div class="mt-12 space-y-6">
+            **Summary:**
+Quanto tempo leva para criar o site?<i class="fas fa-plus group-open:rotate-45"></i>
+                <p class="text-white/70 mt-6">O prazo médio varia de 3 a 15 dias úteis, dependendo do plano escolhido e da complexidade.</p>
+            **Summary:**
+O site funciona perfeitamente no celular?<i class="fas fa-plus group-open:rotate-45"></i>
+                <p class="text-white/70 mt-6">Sim. Todos os sites são 100% responsivos e otimizados para mobile.</p>
+            **Summary:**
+Posso pedir alterações depois da entrega?<i class="fas fa-plus group-open:rotate-45"></i>
+                <p class="text-white/70 mt-6">Sim. Cada plano inclui rodadas de ajustes inclusas.</p>
+            **Summary:**
+Vocês também fazem logo e identidade visual?<i class="fas fa-plus group-open:rotate-45"></i>
+                <p class="text-white/70 mt-6">Sim! Oferecemos identidade visual completa junto com o site (Plano Prime).</p>
+            **Summary:**
+Atendem só Guarulhos?<i class="fas fa-plus group-open:rotate-45"></i>
+                <p class="text-white/70 mt-6">Não. Atendemos todo o Brasil de forma 100% online.</p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="bg-gradient-to-r from-[#0A1F3D] to-black py-20 text-center">
+    <div class="max-w-3xl mx-auto px-8">
+        <h2 class="text-6xl text-grotesk font-semibold leading-none">Seu negócio merece uma presença digital de verdade.</h2>
+        <p class="text-2xl mt-8 text-white/80">Vamos criar um site forte, bonito e que vende para sua marca?</p>
+        
+        <div class="mt-12 flex flex-col sm:flex-row gap-6 justify-center">
+            <a href="https://wa.me/55[WHATSAPP]" target="_blank" class="inline-flex items-center justify-center bg-[#25D366] text-white text-2xl font-semibold px-14 py-7 rounded-3xl">
+                <i class="fab fa-whatsapp mr-4 text-4xl"></i>
+                FALAR COM A VISION STORE AGORA
+            </a>
+            <button onclick="smoothScrollTo('contato')" class="inline-flex items-center justify-center border-2 border-white/30 hover:border-white px-14 py-7 rounded-3xl font-semibold text-2xl">
+                SOLICITAR ORÇAMENTO
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- CONTATO / FORMULÁRIO -->
+<section id="contato" class="py-24 bg-black">
+    <div class="max-w-screen-2xl mx-auto px-8">
+        <div class="grid lg:grid-cols-12 gap-16">
+            <div class="lg:col-span-5">
+                <h2 class="text-5xl text-grotesk font-semibold">Vamos transformar sua visão em realidade?</h2>
+                <p class="mt-8 text-2xl text-white/80">Preencha o formulário ou mande mensagem direta no WhatsApp. Resposta em até 1 hora útil.</p>
+                
+                <div class="mt-16 flex flex-col gap-8">
+                    <a href="https://wa.me/55[WHATSAPP]" target="_blank" class="flex items-center gap-x-6 text-5xl">
+                        <i class="fab fa-whatsapp text-green-500"></i>
+                        <div>
+                            <div class="font-semibold text-2xl">[WHATSAPP]</div>
+                            <div class="text-white/70">Atendimento direto • Segunda a Sábado</div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.instagram.com/[INSTAGRAM_HANDLE]" target="_blank" class="flex items-center gap-x-6 text-5xl">
+                        <i class="fab fa-instagram"></i>
+                        <div class="font-semibold text-2xl">@[INSTAGRAM_HANDLE]</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Formulário -->
+            <div class="lg:col-span-7 bg-[#0A1F3D] rounded-3xl p-10">
+                <form id="contact-form" onsubmit="handleFormSubmit(event)">
+                    <div class="grid grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Seu nome</label>
+                            <input type="text" required class="w-full bg-white/10 border border-white/20 focus:border-[#00BFFF] rounded-2xl px-6 py-5 outline-none" placeholder="Vitor Lucas">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Nome da empresa</label>
+                            <input type="text" class="w-full bg-white/10 border border-white/20 focus:border-[#00BFFF] rounded-2xl px-6 py-5 outline-none" placeholder="Sua Empresa">
+                        </div>
+                    </div>
+
+                    <div class="mt-6">
+                        <label class="block text-sm font-medium mb-2">Nicho do negócio</label>
+                        <input type="text" required class="w-full bg-white/10 border border-white/20 focus:border-[#00BFFF] rounded-2xl px-6 py-5 outline-none" placeholder="Barbearia / Loja / etc">
+                    </div>
+
+                    <div class="mt-6">
+                        <label class="block text-sm font-medium mb-2">Serviço desejado</label>
+                        <select class="w-full bg-white/10 border border-white/20 focus:border-[#00BFFF] rounded-2xl px-6 py-5 outline-none">
+                            <option>Site Institucional</option>
+                            <option>Landing Page</option>
+                            <option>Catálogo Online</option>
+                            <option>Plano Prime (completo)</option>
+                        </select>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-6 mt-6">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">WhatsApp</label>
+                            <input type="tel" required class="w-full bg-white/10 border border-white/20 focus:border-[#00BFFF] rounded-2xl px-6 py-5 outline-none" placeholder="(11) 9XXXX-XXXX">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Orçamento estimado</label>
+                            <input type="text" class="w-full bg-white/10 border border-white/20 focus:border-[#00BFFF] rounded-2xl px-6 py-5 outline-none" placeholder="R$ 1.000 - R$ 3.000">
+                        </div>
+                    </div>
+
+                    <div class="mt-6">
+                        <label class="block text-sm font-medium mb-2">Mensagem / Detalhes do projeto</label>
+                        <textarea rows="4" class="w-full bg-white/10 border border-white/20 focus:border-[#00BFFF] rounded-3xl px-6 py-5 outline-none" placeholder="Me conte mais sobre seu negócio..."></textarea>
+                    </div>
+
+                    <button type="submit" class="mt-10 w-full bg-[#00BFFF] hover:bg-white hover:text-[#0A1F3D] py-6 rounded-3xl font-semibold text-xl">ENVIAR MENSAGEM PARA A VISION STORE</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- RODAPÉ -->
+<footer class="bg-black border-t border-white/10 py-16">
+    <div class="max-w-screen-2xl mx-auto px-8">
+        <div class="flex flex-col lg:flex-row justify-between gap-y-12">
+            <div>
+                <div class="flex items-center gap-x-3 mb-6">
+                    <svg width="36" height="36" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M25 20 L40 75 L50 45 L60 75 L75 20" stroke="#ffffff" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"/>
+                        <circle cx="50" cy="47" r="18" stroke="#00BFFF" stroke-width="9" fill="none"/>
+                        <circle cx="50" cy="47" r="8" fill="#00BFFF"/>
+                    </svg>
+                    <div class="text-grotesk text-3xl font-semibold">Vision Store</div>
+                </div>
+                <p class="text-white/60 max-w-xs">Transformando visão em presença digital.</p>
+                <p class="text-xs text-white/40 mt-12">© 2026 Vision Store Studio. Todos os direitos reservados.</p>
+            </div>
+
+            <div class="grid grid-cols-3 gap-x-16">
+                <div>
+                    <div class="font-semibold mb-6">Navegação</div>
+                    <a href="#home" class="block text-white/70 hover:text-white mb-3">Início</a>
+                    <a href="#servicos" class="block text-white/70 hover:text-white mb-3">Serviços</a>
+                    <a href="#portfolio" class="block text-white/70 hover:text-white mb-3">Portfólio</a>
+                    <a href="#planos" class="block text-white/70 hover:text-white mb-3">Planos</a>
+                </div>
+                <div>
+                    <div class="font-semibold mb-6">Legal</div>
+                    <a href="#" class="block text-white/70 hover:text-white mb-3">Política de Privacidade</a>
+                    <a href="#" class="block text-white/70 hover:text-white mb-3">Termos de Uso</a>
+                </div>
+                <div>
+                    <div class="font-semibold mb-6">Contato</div>
+                    <a href="https://wa.me/55[WHATSAPP]" class="block text-white/70 hover:text-white mb-3">WhatsApp</a>
+                    <a href="https://www.instagram.com/[INSTAGRAM_HANDLE]" class="block text-white/70 hover:text-white">Instagram</a>
+                </div>
+            </div>
+
+            <div class="max-w-xs">
+                <p class="text-white/60 text-sm">Criado com ❤️ por Vitor Lucas para empreendedores que querem mais do digital.</p>
+                <p class="mt-8 text-xs uppercase tracking-widest text-white/30">Feito para ser o site mais profissional da sua jornada.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- MODAL DE PROJETO -->
+<div id="project-modal" onclick="if(event.target.id === 'project-modal') hideProjectModal()" class="hidden fixed inset-0 bg-black/80 z-[99999] flex items-center justify-center">
+    <div onclick="event.stopImmediatePropagation()" class="modal bg-[#0A1F3D] max-w-4xl w-full mx-4 rounded-3xl p-10 relative">
+        <button onclick="hideProjectModal()" class="absolute top-8 right-8 text-4xl text-white hover:text-white">×</button>
+        <div id="modal-content" class="text-white"></div>
+    </div>
+</div>
+
+<script>
+    // Tailwind config (já incluído via CDN)
+    function initializeTailwind() {
+        return {
+            config(userConfig = {}) {
+                return {
+                    content: [],
+                    theme: {
+                        extend: {
+                            colors: {
+                                navy: '#0A1F3D',
+                                accent: '#00BFFF'
+                            }
+                        }
+                    },
+                    plugins: [],
+                    ...userConfig,
+                }
+            },
+            theme(userConfig = {}) {
+                return {
+                    ...this.defaultTheme(),
+                    ...userConfig,
+                }
+            },
+            defaultTheme() {
+                return {
+                    extend: {
+                        colors: {
+                            navy: '#0A1F3D',
+                            accent: '#00BFFF'
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Scroll suave
+    function smoothScrollTo(section) {
+        const element = document.getElementById(section)
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' })
+        }
+    }
+
+    // Mobile menu
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobile-menu')
+        const icon = document.getElementById('hamburger-icon')
+        if (menu.classList.contains('hidden')) {
+            menu.style.display = 'block'
+            icon.classList.replace('fa-bars', 'fa-times')
+        } else {
+            menu.style.display = 'none'
+            icon.classList.replace('fa-times', 'fa-bars')
+        }
+    }
+
+    // Formulário
+    function handleFormSubmit(e) {
+        e.preventDefault()
+        const btn = e.target.querySelector('button[type="submit"]')
+        const originalText = btn.textContent
+        
+        btn.innerHTML = `
+            <svg class="animate-spin h-6 w-6 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0c0-5.373 0 0 5.373 0 12h4z"></path>
+            </svg>
+        `
+        setTimeout(() => {
+            alert('✅ Mensagem enviada com sucesso!\n\nA Vision Store entrará em contato em breve via WhatsApp ou e-mail.')
+            e.target.reset()
+            btn.textContent = originalText
+        }, 1800)
+    }
+
+    // Modal de portfólio
+    function showProjectModal(id) {
+        const modal = document.getElementById('project-modal')
+        const content = document.getElementById('modal-content')
+        let html = ''
+
+        if (id === 1) {
+            html = `
+                <h3 class="text-4xl text-grotesk font-semibold">Barbearia Elite Cut</h3>
+                <p class="text-[#00BFFF] mt-1">Modelo conceito • Estilo premium dark</p>
+                <div class="my-10 bg-gradient-to-br from-[#1C2B3A] to-black rounded-3xl h-96 flex items-center justify-center text-8xl">✂️</div>
+                <p class="text-white/80">Site completo com agendamento, galeria de cortes, depoimentos e integração direta com WhatsApp para marcar horário. Design minimalista e masculino.</p>
+                <div class="mt-8 flex gap-4 flex-wrap">
+                    <div class="text-xs bg-white/10 px-4 py-3 rounded-3xl">Design premium</div>
+                    <div class="text-xs bg-white/10 px-4 py-3 rounded-3xl">Agendamento online</div>
+                    <div class="text-xs bg-white/10 px-4 py-3 rounded-3xl">Galeria de fotos</div>
+                </div>
+            `
+        } else if (id === 2) {
+            html = `
+                <h3 class="text-4xl text-grotesk font-semibold">Vibe Store • Moda Masculina</h3>
+                <p class="text-[#00BFFF] mt-1">Catálogo online completo</p>
+                <div class="my-10 bg-gradient-to-br from-[#3A1F2E] to-black rounded-3xl h-96 flex items-center justify-center text-8xl">👕</div>
+                <p class="text-white/80">Catálogo visual com títulos, carrinho via WhatsApp, fotos profissionais e navegação fluida. Ideal para lojas de roupa que querem vender sem complexidade.</p>
+            `
+        } else if (id === 3) {
+            html = `
+                <h3 class="text-4xl text-grotesk font-semibold">Bella Vita Restaurante</h3>
+                <p class="text-[#00BFFF] mt-1">Site + cardápio digital</p>
+                <div class="my-10 bg-gradient-to-br from-[#2E1F1A] to-black rounded-3xl h-96 flex items-center justify-center text-8xl">🍝</div>
+                <p class="text-white/80">Cardápio interativo, reservas, fotos dos pratos, localização via Google Maps e botão direto para delivery no WhatsApp.</p>
+            `
+        }
+
+        content.innerHTML = html
+        modal.classList.remove('hidden')
+        modal.classList.add('flex')
+    }
+
+    function hideProjectModal() {
+        const modal = document.getElementById('project-modal')
+        modal.classList.add('hidden')
+        modal.classList.remove('flex')
+    }
+
+    console.log('%c✅ Site Vision Store carregado com sucesso! Design premium 100% implementado.', 'color:#00BFFF; font-size:13px; font-family:monospace')
+
+    // Inicializa tudo
+    document.addEventListener('DOMContentLoaded', () => {
+        initializeTailwind().config()
+    })
+</script>
+</body>
+</html>
